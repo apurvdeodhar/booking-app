@@ -17,20 +17,20 @@
   - meaning it needs `main()`
   ```go
   package main
-  
-  //main package a bunch of functions 
+
+  //main package a bunch of functions
   //one of them is "fmt"
-  
+
   import "fmt"
   ```
 - To find which function belongs to which package [see](https://pkg.go.dev/fmt)
 - Variable names are in `camelCase`
   - use `const conferenceTickets = 314` for keeping the value constant throughout the app.
-  - for `%v`, `%s` in `fmt.printf("This is my name: %v", name)` see [fmt package](https://pkg.go.dev/fmt) 
+  - for `%v`, `%s` in `fmt.printf("This is my name: %v", name)` see [fmt package](https://pkg.go.dev/fmt)
 
 
 - Data types
-  - ```go 
+  - ```go
     "this is a string"
     // declare and assing varible at the same time
     // so instead var name string = "Jim" this is called syntactic suger
@@ -47,7 +47,7 @@
       var bookings [50]string
       // can also be written like this it is called array type in go
     ```
-    
+
 - Slices
   - Abstraction of array.
   - Arrays without size like `var bookings []string`
@@ -58,7 +58,7 @@
     - ```go
         if remainingTickets == 0 {
             // do something
-      } 
+      }
         else {
             // do or skip something
       }
@@ -72,14 +72,32 @@
     }
     ```
   - Interesting thing in Go inside `()` of function takes arguments but outside `()` it needs to know what type it will return
-  - Best thing until now 💪🏽, **You can return any no of values from a func unlike other programming languages.** 
+  - Best thing until now 💪🏽, **You can return any no of values from a func unlike other programming languages.**
     See `userInputValidate` specially `(bool,bool,bool)` and line `36` where it is called.
 
 - Package level variables
   - Just define them on package level
-  - These variables can not be created shorthanded using `:=` rather define them with `var foo string = "foobar"` 
+  - These variables can not be created shorthanded using `:=` rather define them with `var foo string = "foobar"`
 
 - Packages
   - If you want to use a func from imported package let's say `booking-app/helper` has been imported and now func `userInputValidate` needs to be used in `main.go`
-    - **This func `userInputValidate` needs to be exported from `booking-app/helper`** by just making first letter capital `UserInputValidate` 
+    - **This func `userInputValidate` needs to be exported from `booking-app/helper`** by just making first letter capital `UserInputValidate`
       (same applies for var names) just like `fmt.Println`
+
+- ⚠️ Maps ⚠️
+  - Good read [ref](https://bitfieldconsulting.com/golang/map-declaring-initializing)
+  - You can not mix data types in Go data types for all keys and values should be same.
+    - ```go
+      // declare map
+      // data type in [] is for keys and outside for values
+      var userData = map[string]string
+
+      // declare and create empty map
+      var userData = make(map[string]string)
+
+      // declare and create empty list of maps
+      var bookings = make([]map[string]string, 0)
+
+      ```
+    - Use `strconv.FormatUint()` to convert string to and from other data types [ref](https://pkg.go.dev/strconv)
+    - Create list of maps like `var bookings = make([]map[string]string)`

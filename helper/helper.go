@@ -11,4 +11,3 @@ func UserInputValidate(firstName string, lastName string, email string, userTick
 
 	return isValidName, isValidEmail, isValidTicketNumber
 }
-
